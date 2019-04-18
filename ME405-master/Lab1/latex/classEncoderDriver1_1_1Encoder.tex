@@ -1,0 +1,119 @@
+\hypertarget{classEncoderDriver1_1_1Encoder}{}\section{Encoder\+Driver1.\+Encoder Class Reference}
+\label{classEncoderDriver1_1_1Encoder}\index{Encoder\+Driver1.\+Encoder@{Encoder\+Driver1.\+Encoder}}
+
+
+This class initializes the encoder in a DC motor with specified.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classEncoderDriver1_1_1Encoder_aa7177f4e682b9507dfb0db1602137c7c}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, input\+\_\+pin1, input\+\_\+pin2, input\+\_\+timer)
+\begin{DoxyCompactList}\small\item\em Set up a timer/counter in quadrature decoding mode to read an. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{classEncoderDriver1_1_1Encoder_a40717d85819b23fba3c758c1c3a6ae9d}{read}} (self)
+\begin{DoxyCompactList}\small\item\em Updates and returns the encoder position using the number in the. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{classEncoderDriver1_1_1Encoder_a9d715e18b6509019f5233b8f31af2c0c}{zero}} (self)
+\begin{DoxyCompactList}\small\item\em Set the encoder counter to zero.\+Reinitializes share variables. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classEncoderDriver1_1_1Encoder_ab529b3dd91016d920626d8f9966f12af}\label{classEncoderDriver1_1_1Encoder_ab529b3dd91016d920626d8f9966f12af}} 
+{\bfseries timer}
+\item 
+\mbox{\Hypertarget{classEncoderDriver1_1_1Encoder_a4fcd4bda5c40e8e4cba3b7ae9cf58c1c}\label{classEncoderDriver1_1_1Encoder_a4fcd4bda5c40e8e4cba3b7ae9cf58c1c}} 
+{\bfseries ch1}
+\item 
+\mbox{\Hypertarget{classEncoderDriver1_1_1Encoder_a52d63bff85412a713fc892f1c7189d4b}\label{classEncoderDriver1_1_1Encoder_a52d63bff85412a713fc892f1c7189d4b}} 
+{\bfseries ch2}
+\item 
+\mbox{\Hypertarget{classEncoderDriver1_1_1Encoder_ad0ea57f3b83afd3f7e3ef4f54981949e}\label{classEncoderDriver1_1_1Encoder_ad0ea57f3b83afd3f7e3ef4f54981949e}} 
+{\bfseries position}
+\item 
+\mbox{\Hypertarget{classEncoderDriver1_1_1Encoder_ac2446b9832f6156a2c6f2179b6d77d62}\label{classEncoderDriver1_1_1Encoder_ac2446b9832f6156a2c6f2179b6d77d62}} 
+{\bfseries theta\+\_\+old}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class initializes the encoder in a DC motor with specified. 
+
+input pins and timer for the M\+E405 board. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classEncoderDriver1_1_1Encoder_aa7177f4e682b9507dfb0db1602137c7c}\label{classEncoderDriver1_1_1Encoder_aa7177f4e682b9507dfb0db1602137c7c}} 
+\index{Encoder\+Driver1\+::\+Encoder@{Encoder\+Driver1\+::\+Encoder}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!Encoder\+Driver1\+::\+Encoder@{Encoder\+Driver1\+::\+Encoder}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def Encoder\+Driver1.\+Encoder.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{input\+\_\+pin1,  }\item[{}]{input\+\_\+pin2,  }\item[{}]{input\+\_\+timer }\end{DoxyParamCaption})}
+
+
+
+Set up a timer/counter in quadrature decoding mode to read an. 
+
+optical encoder. User must specify which pin and timers the
+
+which the encoder is connected to. To declare which pins you are
+
+using, use the following code (N\+U\+C\+L\+E\+O-\/\+L476\+RG)\+:
+
+For pin C6 and C7 and timer 8 \begin{DoxyVerb}tim8 = pyb.Timer(8, prescaler=1, period=65535)
+
+pinC6 = pyb.Pin (pyb.Pin.board.PC6, pyb.Pin.IN)
+
+pinC7 = pyb.Pin (pyb.Pin.board.PC7, pyb.Pin.IN)
+\end{DoxyVerb}
+
+
+For pin B6 and B7 and timer 4 \begin{DoxyVerb}pinB6 = pyb.Pin (pyb.Pin.board.PB6, pyb.Pin.IN)
+
+pinB7 = pyb.Pin (pyb.Pin.board.PB7, pyb.Pin.IN)
+
+tim4 = pyb.Timer(4, prescaler=1, period=65535)
+\end{DoxyVerb}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+\_\+pin1} & pin that connects first input from the encoder to \begin{DoxyVerb}    the microcontroller.
+\end{DoxyVerb}
+\\
+\hline
+{\em input\+\_\+pin2} & pin that connects second input from the encoder to \begin{DoxyVerb}    the microcontroller.
+\end{DoxyVerb}
+\\
+\hline
+{\em input\+\_\+timer} & sets up timer for timer channels \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classEncoderDriver1_1_1Encoder_a40717d85819b23fba3c758c1c3a6ae9d}\label{classEncoderDriver1_1_1Encoder_a40717d85819b23fba3c758c1c3a6ae9d}} 
+\index{Encoder\+Driver1\+::\+Encoder@{Encoder\+Driver1\+::\+Encoder}!read@{read}}
+\index{read@{read}!Encoder\+Driver1\+::\+Encoder@{Encoder\+Driver1\+::\+Encoder}}
+\subsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily def Encoder\+Driver1.\+Encoder.\+read (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Updates and returns the encoder position using the number in the. 
+
+encoder counter. Do this by taking the difference of the new position
+
+from the old position. The read function takes into account the over
+
+flows and underflow of the encoder. \mbox{\Hypertarget{classEncoderDriver1_1_1Encoder_a9d715e18b6509019f5233b8f31af2c0c}\label{classEncoderDriver1_1_1Encoder_a9d715e18b6509019f5233b8f31af2c0c}} 
+\index{Encoder\+Driver1\+::\+Encoder@{Encoder\+Driver1\+::\+Encoder}!zero@{zero}}
+\index{zero@{zero}!Encoder\+Driver1\+::\+Encoder@{Encoder\+Driver1\+::\+Encoder}}
+\subsubsection{\texorpdfstring{zero()}{zero()}}
+{\footnotesize\ttfamily def Encoder\+Driver1.\+Encoder.\+zero (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Set the encoder counter to zero.\+Reinitializes share variables. 
+
+position, theta\+\_\+old and timer.\+counter() to zero 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{EncoderDriver1_8py}{Encoder\+Driver1.\+py}}\end{DoxyCompactItemize}
