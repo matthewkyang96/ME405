@@ -1,0 +1,103 @@
+\hypertarget{classController_1_1Controller}{}\section{Controller.\+Controller Class Reference}
+\label{classController_1_1Controller}\index{Controller.\+Controller@{Controller.\+Controller}}
+
+
+The proportional gain contoller algorithm.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classController_1_1Controller_ae584317363efa29ace5c4294ff9675a2}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classController_1_1Controller}{Controller}} Constructor. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{classController_1_1Controller_a6e67252fcda031e508c3149d3f2fdfc0}{set\+\_\+point}} (self, new\+\_\+setpoint)
+\begin{DoxyCompactList}\small\item\em This method receives the data from the user input reference position. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{classController_1_1Controller_a74c2a2f04c7d4f579edb098b5598e012}{control\+\_\+gain}} (self, new\+\_\+\+Kp)
+\begin{DoxyCompactList}\small\item\em This method receives the data from the user input gain in a string,. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{classController_1_1Controller_aedd405d67a7fc1b0ae1c4c50eb5eaf4d}{closed\+\_\+loop}} (self, theta\+\_\+measured, theta\+\_\+ref, K\+\_\+p)
+\begin{DoxyCompactList}\small\item\em This method executes the proportional gain controller. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The proportional gain contoller algorithm. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classController_1_1Controller_ae584317363efa29ace5c4294ff9675a2}\label{classController_1_1Controller_ae584317363efa29ace5c4294ff9675a2}} 
+\index{Controller\+::\+Controller@{Controller\+::\+Controller}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!Controller\+::\+Controller@{Controller\+::\+Controller}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def Controller.\+Controller.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{classController_1_1Controller}{Controller}} Constructor. 
+
+Creates an instance of an object of the class \mbox{\hyperlink{classController_1_1Controller}{Controller}} to be used
+
+with the following methods 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classController_1_1Controller_aedd405d67a7fc1b0ae1c4c50eb5eaf4d}\label{classController_1_1Controller_aedd405d67a7fc1b0ae1c4c50eb5eaf4d}} 
+\index{Controller\+::\+Controller@{Controller\+::\+Controller}!closed\+\_\+loop@{closed\+\_\+loop}}
+\index{closed\+\_\+loop@{closed\+\_\+loop}!Controller\+::\+Controller@{Controller\+::\+Controller}}
+\subsubsection{\texorpdfstring{closed\+\_\+loop()}{closed\_loop()}}
+{\footnotesize\ttfamily def Controller.\+Controller.\+closed\+\_\+loop (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{theta\+\_\+measured,  }\item[{}]{theta\+\_\+ref,  }\item[{}]{K\+\_\+p }\end{DoxyParamCaption})}
+
+
+
+This method executes the proportional gain controller. 
+
+The position input by the user is compared to the current position of the encoder.
+
+This difference in position is multiplied by the gain to adjust
+
+the motor duty cycle in order to reach the referenced position.
+
+
+\begin{DoxyParams}{Parameters}
+{\em theta\+\_\+measured} & -\/ The position read by the encoder \\
+\hline
+{\em theta\+\_\+ref} & -\/ The position input by the user \\
+\hline
+{\em K\+\_\+p} & -\/ The proportional gain input by the user \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classController_1_1Controller_a74c2a2f04c7d4f579edb098b5598e012}\label{classController_1_1Controller_a74c2a2f04c7d4f579edb098b5598e012}} 
+\index{Controller\+::\+Controller@{Controller\+::\+Controller}!control\+\_\+gain@{control\+\_\+gain}}
+\index{control\+\_\+gain@{control\+\_\+gain}!Controller\+::\+Controller@{Controller\+::\+Controller}}
+\subsubsection{\texorpdfstring{control\+\_\+gain()}{control\_gain()}}
+{\footnotesize\ttfamily def Controller.\+Controller.\+control\+\_\+gain (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{new\+\_\+\+Kp }\end{DoxyParamCaption})}
+
+
+
+This method receives the data from the user input gain in a string,. 
+
+and converts this data type to a float to be used.
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+\+Kp} & -\/ Converted proportional gain \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classController_1_1Controller_a6e67252fcda031e508c3149d3f2fdfc0}\label{classController_1_1Controller_a6e67252fcda031e508c3149d3f2fdfc0}} 
+\index{Controller\+::\+Controller@{Controller\+::\+Controller}!set\+\_\+point@{set\+\_\+point}}
+\index{set\+\_\+point@{set\+\_\+point}!Controller\+::\+Controller@{Controller\+::\+Controller}}
+\subsubsection{\texorpdfstring{set\+\_\+point()}{set\_point()}}
+{\footnotesize\ttfamily def Controller.\+Controller.\+set\+\_\+point (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{new\+\_\+setpoint }\end{DoxyParamCaption})}
+
+
+
+This method receives the data from the user input reference position. 
+
+in a string, and converts this data type to an integer to be used.
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+setpoint} & -\/ Converted reference position \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Controller_8py}{Controller.\+py}}\end{DoxyCompactItemize}
