@@ -45,8 +45,7 @@ while True:
         enc.read()
         theta_measured = enc.position
         position.append(theta_measured)
-        control.closed_loop(theta_measured,theta_ref,K_p)
-        level = control.a_star
+        level = control.closed_loop(theta_measured,theta_ref,K_p)
         motor.set_duty_cycle(level)
     level = 0
     motor.set_duty_cycle(level)

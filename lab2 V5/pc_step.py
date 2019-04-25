@@ -48,10 +48,13 @@ while True:
     #print(time)
     position = list(position)
     position = [float(i) for i in position]
-    #print(position)
+    print(position)
     pyplot.plot(time,position)
+    pyplot.xlabel ("Time (ms)")                         
+    pyplot.ylabel ("Position (ticks)")                          
+    pyplot.title ("Step Response of 24 Volt DC Motor")                           
     pyplot.show()
- 
+    
  
     
 
