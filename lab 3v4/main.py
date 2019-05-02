@@ -57,49 +57,70 @@ control2 = Controller()
 time = []
 position1 = []
 position2 = []
+
+
 # Allocate memory so that exceptions raised in interrupt service routines can
 # generate useful diagnostic printouts
 micropython.alloc_emergency_exception_buf (100)
-ref_time = utime.ticks_ms()
+
+
+#a = input()
+#theta_ref1.put(control1.set_point(a))
+#b = input()
+#K_p1.put(control1.control_gain(b))
+#c = input()
+#theta_ref2 = control2.set_point(c)
+#d = input()
+#K_p2 = control2.control_gain(d)
+
 
 
 #theta_ref = int(10000)
 #K_p = float(0.02)
 
-def task1_encoder ():
+def task1_motorcontroller1 ():
     ''' Docstring.  '''
-    while True:   
+     
+    while True:
+        
         theta_measured1.put(enc1.read()) 
-        theta_measured2.put(enc2.read())
+        x = theta_measured1.get()
+        level1 = control1.closed_loop(x,10000,.02)
+        motor1.set_duty_cycle(level1)
+       
         yield (0)
 
 
-def task2_motorcontroller1 ():
+def task2_motorcontroller2 ():
     ''' Docstring. '''
+    
     while True:
-        x = theta_measured1.get()
-        level1 = control1.closed_loop(x,10000,.02)
-        motor1.set_duty_cycle(level1) 
-        print_task.put(str(x))
+         
+        theta_measured2.put(enc2.read())
         y = theta_measured2.get()
         level2 = control2.closed_loop(y,10000,.02)
         motor2.set_duty_cycle(level2) 
-#        print.task.put(y)
+       
         yield (0)  
         
-def task3_print_task():
-    while True:
-#        print_task.run()
-#        z = theta_measured2.get()
-#        print(z)
-        yield (0)
+#def task3_print_task():
+#    ref_time = utime.ticks_ms()
+#    while True:
+#        now = utime.ticks_ms()
+#        delta_time = now - ref_time
+#        
+#        print_task.put(str(delta_time)+','+str(enc1.read())+"\n")
+##        print_task.put(str(theta_measured2.get())+"\n")
+#        
+#        yield (0)
         
-def task4_timer():
-       
-    now = utime.ticks_ms()
-    delta_time = now - ref_time
-    time.append(delta_time)
-    yield (0)
+#def task4_timer():
+#       
+#    now = utime.ticks_ms()
+#    delta_time = now - ref_time
+#    time.append(delta_time)
+#    
+#    yield (0)
 
 
 # =============================================================================
@@ -109,35 +130,33 @@ if __name__ == "__main__":
     print ('\033[2JTesting scheduler in cotask.py\n')
 
     # Create a share and some queues to test diagnostic printouts
-    share0 = task_share.Share ('i', thread_protect = False, name = "Share_0")
-    theta_measured1 = task_share.Share('i', name = "theta_measured")
-    theta_measured2 = task_share.Share('i', name = "theta_measured")
-    q0 = task_share.Queue ('B', 6, thread_protect = False, overwrite = False,
-                           name = "Queue_0")
-    q1 = task_share.Queue ('B', 8, thread_protect = False, overwrite = False,
-                           name = "Queue_1")
-    print_queue = task_share.Queue ('B', 100, name = "Print_Queue", 
-                         thread_protect = True, overwrite = False)
+   
+    theta_measured1 = task_share.Share('i', name = "theta_measuredA")
+    theta_measured2 = task_share.Share('i', name = "theta_measuredB")
+#    theta_ref1 = task_share.Share('i', name = "theta_refA")
+#    theta_ref1 = task_share.Share('i', name = "theta_refB")
+#    k_p1 = task_share.Share('f', name = "k_pA")
+#    k_p2 = task_share.Share('f', name = "k_pB")
+   
+    
 
 
     # Create the tasks. If trace is enabled for any task, memory will be
     # allocated for state transition tracing, and the application will run out
     # of memory after a while and quit. Therefore, use tracing only for 
     # debugging and set trace to False when it's not needed
-    task1 = cotask.Task (task1_encoder, name = 'Task_1', priority = 1, 
-                         period = 0.5, profile = True, trace = False)
-    task2 = cotask.Task (task2_motorcontroller1, name = 'Task_2', priority = 2, 
-                         period = 1, profile = True, trace = False)
-    task3 = cotask.Task (task3_print_task, name = 'Printing', priority = 0, 
-                           profile = True)
-    task4 = cotask.Task (task4_timer, name = 'Task_4', priority = 2, 
-                         period = 1, profile = True, trace = False)
+    task1 = cotask.Task (task1_motorcontroller1, name = 'Task_1', priority = 2, 
+                         period = 25, profile = True, trace = False)
+    task2 = cotask.Task (task2_motorcontroller2, name = 'Task_2', priority = 2, 
+                         period = 25, profile = True, trace = False)
+#    task3 = cotask.Task (task3_print_task, name = 'Task_3', priority = 1, 
+#                         period = 25, profile = True, trace = False)
     
 
     cotask.task_list.append (task1)
     cotask.task_list.append (task2)
-    cotask.task_list.append (task3)
-    cotask.task_list.append (task4)
+#    cotask.task_list.append (task3)
+
 
     # A task which prints characters from a queue has automatically been
     # created in print_task.py; it is accessed by print_task.put_bytes()
