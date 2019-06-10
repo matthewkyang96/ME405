@@ -1,0 +1,70 @@
+\hypertarget{classmotordriver_1_1MotorDriver}{}\section{motordriver.\+Motor\+Driver Class Reference}
+\label{classmotordriver_1_1MotorDriver}\index{motordriver.\+Motor\+Driver@{motordriver.\+Motor\+Driver}}
+
+
+This class implements a motor driver for the M\+E405 board.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classmotordriver_1_1MotorDriver_a2b8897caed588f128042fc1521e3057c}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, pin1, pin2, pin3, timer)
+\begin{DoxyCompactList}\small\item\em Creates a motor driver by initializing G\+P\+IO pins and turning the motor off for safety. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{classmotordriver_1_1MotorDriver_aaf4bde268698934aea24cf23343bc556}{set\+\_\+duty\+\_\+cycle}} (self, level)
+\begin{DoxyCompactList}\small\item\em This method sets the duty cycle to be sent to the motor to the given level. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classmotordriver_1_1MotorDriver_a3ea5dc48dedc82b9e6499d91038bdcfe}\label{classmotordriver_1_1MotorDriver_a3ea5dc48dedc82b9e6499d91038bdcfe}} 
+\mbox{\hyperlink{classmotordriver_1_1MotorDriver_a3ea5dc48dedc82b9e6499d91038bdcfe}{p1}}
+\begin{DoxyCompactList}\small\item\em defines the pin of the P\+WM that the user inputs for the instance of the object \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmotordriver_1_1MotorDriver_a9a61d26708f2a7a1c2d3fd19a3db2cc2}\label{classmotordriver_1_1MotorDriver_a9a61d26708f2a7a1c2d3fd19a3db2cc2}} 
+\mbox{\hyperlink{classmotordriver_1_1MotorDriver_a9a61d26708f2a7a1c2d3fd19a3db2cc2}{p2}}
+\begin{DoxyCompactList}\small\item\em defines the output pin that powers the motor to spin in one direction \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmotordriver_1_1MotorDriver_a8940e3b4d7c66c4e73a5db89cd5b6440}\label{classmotordriver_1_1MotorDriver_a8940e3b4d7c66c4e73a5db89cd5b6440}} 
+\mbox{\hyperlink{classmotordriver_1_1MotorDriver_a8940e3b4d7c66c4e73a5db89cd5b6440}{p3}}
+\begin{DoxyCompactList}\small\item\em defines the output pin that powers the motor to spin in one direction \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmotordriver_1_1MotorDriver_afaa5d2ef405f0223461d31e354ecfb7f}\label{classmotordriver_1_1MotorDriver_afaa5d2ef405f0223461d31e354ecfb7f}} 
+\mbox{\hyperlink{classmotordriver_1_1MotorDriver_afaa5d2ef405f0223461d31e354ecfb7f}{tim}}
+\begin{DoxyCompactList}\small\item\em defines the timer that the P\+WM will run on \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class implements a motor driver for the M\+E405 board. 
+
+N\+O\+TE\+: reversing the signal of p2 and p3 will spin the motor in the reverse direction 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classmotordriver_1_1MotorDriver_a2b8897caed588f128042fc1521e3057c}\label{classmotordriver_1_1MotorDriver_a2b8897caed588f128042fc1521e3057c}} 
+\index{motordriver\+::\+Motor\+Driver@{motordriver\+::\+Motor\+Driver}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!motordriver\+::\+Motor\+Driver@{motordriver\+::\+Motor\+Driver}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def motordriver.\+Motor\+Driver.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{pin1,  }\item[{}]{pin2,  }\item[{}]{pin3,  }\item[{}]{timer }\end{DoxyParamCaption})}
+
+
+
+Creates a motor driver by initializing G\+P\+IO pins and turning the motor off for safety. 
+
+example(\+P\+A10,\+P\+B4,\+P\+B5,3) 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classmotordriver_1_1MotorDriver_aaf4bde268698934aea24cf23343bc556}\label{classmotordriver_1_1MotorDriver_aaf4bde268698934aea24cf23343bc556}} 
+\index{motordriver\+::\+Motor\+Driver@{motordriver\+::\+Motor\+Driver}!set\+\_\+duty\+\_\+cycle@{set\+\_\+duty\+\_\+cycle}}
+\index{set\+\_\+duty\+\_\+cycle@{set\+\_\+duty\+\_\+cycle}!motordriver\+::\+Motor\+Driver@{motordriver\+::\+Motor\+Driver}}
+\subsubsection{\texorpdfstring{set\+\_\+duty\+\_\+cycle()}{set\_duty\_cycle()}}
+{\footnotesize\ttfamily def motordriver.\+Motor\+Driver.\+set\+\_\+duty\+\_\+cycle (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{level }\end{DoxyParamCaption})}
+
+
+
+This method sets the duty cycle to be sent to the motor to the given level. 
+
+Positive values cause torque in one direction, negative values in the opposite direction. 
+\begin{DoxyParams}{Parameters}
+{\em level} & A signed integer holding the duty cycle of the voltage sent to the motor \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+motordriver.\+py\end{DoxyCompactItemize}
